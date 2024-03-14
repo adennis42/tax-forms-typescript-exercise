@@ -104,7 +104,7 @@ can be confident it was sent before any legal deadlines.
 3. The column displays the Date and Time when the request for an Extension was submitted.
 4. The Date and Time should display in local time and be formatted like: `8/19/2023 7:15:30 PM`.
 
-### TID-2: Submit Extension Request
+### TID-3: Submit Extension Request
 
 #### Story
 
