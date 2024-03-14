@@ -1,6 +1,6 @@
-import formsData from "../data/forms.json";
+import listingsData from "../data/listings.json";
 
-import { Form } from "./applicationTypes";
+import { Listing } from "./applicationTypes";
 
 /*\
 |* !!IMPORTANT!!
@@ -16,8 +16,8 @@ type APIResponse<T> = {
   data: T[];
 }
 
-export const loadForms = () => {
+export const loadListings = () => {
   return Promise.resolve(
-    formsData as APIResponse<Form>,
+    listingsData as APIResponse<Listing>,
   );
 };

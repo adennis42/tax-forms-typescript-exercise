@@ -1,30 +1,30 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
-import { Form, Submission } from "../lib/applicationTypes";
+import { Listing, Submission } from "../lib/applicationTypes";
 
-export type FormsSlice = {
+export type SubmissionsSlice = {
   submissions: Submission[];
 }
 
-const initialState: FormsSlice = {
+const initialState: SubmissionsSlice = {
   submissions: [],
 };
 
-const formSlice = createSlice({
-  name: "forms",
+const submissionsSlice = createSlice({
+  name: "submissions",
   initialState,
   reducers: {
-    submitForm: (state, action: PayloadAction<Form>) => {
+    submitListing: (state, action: PayloadAction<Listing>) => {
       state.submissions.push({
         id: uuidv4(),
-        form: action.payload,
+        listing: action.payload,
       });
     },
   },
 });
 
 export const {
-  submitForm,
-} = formSlice.actions;
+  submitListing,
+} = submissionsSlice.actions;
 
-export default formSlice;
+export default submissionsSlice;

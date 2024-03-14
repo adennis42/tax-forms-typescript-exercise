@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from ".";
 import { User } from "../lib/applicationTypes";
 
 export type UserSlice = {
@@ -6,7 +7,11 @@ export type UserSlice = {
 }
 
 const initialState: UserSlice = {
-  user: null,
+  user: {
+    id: "user-1",
+    name: "Nate Filer",
+    email: "taxpayer@example.com",
+  },
 };
 
 const userSlice = createSlice({
@@ -22,5 +27,9 @@ const userSlice = createSlice({
 export const {
   setUser,
 } = userSlice.actions;
+
+// Selectors
+
+export const selectCurrentUser = ({ user }: RootState) => user.user;
 
 export default userSlice;

@@ -5,8 +5,9 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./App.css";
 
 import Home from "./pages/Home";
-import Forms from "./pages/Forms";
-import Form from "./pages/Form";
+import Listings from "./pages/Listings";
+import Listing from "./pages/Listing";
+import Submissions from "./pages/Submissions";
 import store from "./redux";
 
 const router = createBrowserRouter([
@@ -15,12 +16,16 @@ const router = createBrowserRouter([
     element: <Home />,
     children: [
       {
-        path: "forms",
-        element: <Forms />,
+        path: "listings",
+        element: <Listings />,
       },
       {
-        path: "forms/:id",
-        element: <Form />,
+        path: "listings/:id",
+        element: <Listing />,
+      },
+      {
+        path: "submissions",
+        element: <Submissions />
       },
     ],
   },
