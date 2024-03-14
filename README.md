@@ -3,22 +3,43 @@
 This is a mock application that serves as a technical screener for Reason
 Consulting's developer interview process. In this README you will find a
 seqence of tasks that you are expected to complete that are very similar to
-what would be expected in a production environment.
+what would be expected in a production application.
 
 There is no backing API, and all data is mock data. Refreshing the application
 will reinitialize the application to its starting state, and that's OK. Where
-an API would be expected we have mocked out access with Promise-based
-functions that will stand in. You are not expected to modify the mock API in
+an API would be expected we have mocked out API calls with Promise-based
+functions that can stand in. You are not expected to modify the mock API in
 `lib/api.ts`.
 
 This project was bootstrapped with [Create React
 App](https://github.com/facebook/create-react-app).
 
+## About The Application
+
+The Application allows a Taxpayer to access a public list of property Listings
+for which owners must file Business Personal Property Tax. This public
+property list is maintained by the County's Tax Collector. The User may peruse
+the public list in order to find Listings they own, and may use the
+application to request an Extension on their tax filing. When the User opens a
+listing via the "Request Extension" button, they are considered to have
+claimed the Property, and it is removed from the public list, and added to the
+User's list of "Claimed" properties.
+
+_Please note that in a production application we would require a confirmation
+from the taxpayer when claiming a property, but this has been ommitted for
+brevity._
+
+Once the User clicks "Submit Request" on the Extension form, the API is called
+to record the Submission on the server and with the County.
+
+Unfortunately, time tables are tight, and the last dev got pulled off this
+project before he could finish implementing all of the necessary features...
+
 ## Architecture
 
-The application's Architecture relies React and popular React libraries to
-keep the development experience generic as possible. The critical libraries to
-the architecture are:
+The application's Architecture relies on React and popular React libraries to
+keep the development experience as familiar as possible. The critical
+libraries to the architecture are:
 
 | Library | Description |
 |---------|-------------|
@@ -39,42 +60,41 @@ Authentication and Authorization is neglected in this app. You are assumed to
 be signed into the application through a secure system, and your current
 credentials are in the `users` Slice of the Redux store.
 
+HINT: If you are new to ReduxJS, we strongly recommend that you check out the
+offical browser extensions. This is by no means required, but tends to be
+useful.
+
 ## Tasks
 
 | Task ID | Description |
 |---------|-------|
-| TID-0   | [The Application Throws An Error On Initial Load](#tid-0-bug-the-application-throws-an-error-on-initial-load)|
-| TID-1   | [Submit Extenion Request](#tid-1-submit-extension-request)|
-| TID-2   | [Display Submitted At Time in Submissions Table](#display-submitted-at-time-in-submissions-table) |
-| TID-3   | []() |
+| TID-1   | [Add Reason as Required Text Field ](#tid-1-add-reason-as-required-text-field) |
+| TID-2   | [Display Submitted At Time in Submissions Table](#tid-2-display-submitted-at-time-in-submissions-table) |
+| TID-3   | [Submit Extenion Request](#tid-3-submit-extension-request)|
 | TID-4   | []() |
 | TID-5   | []() |
 | TID-6   | []() |
 
-### TID-0: BUG The Application Throws An Error On Initial Load
-
-TODO: Bug it
-
-### TID-1: Submit Extension Request
+### TID-1: Add Reason as Required Text Field 
 
 #### Story
 
-_As a User, I want to submit my Extension, so that the County receives my
-filing for an extension on my taxes._
+_As a County Administrator, I want Taxpayers to be required to state a reason
+for filing an extension, so that we can better audit Extension filings._
 
 #### Acceptance Criteria
 
-1. The Application submits the Extension Request to the API via
-   `requestExtension` function in `./lib/api.ts`.
-2. The User is redirected to the Submissions page.
-3. The recorded Submission returned from the API shows up on the "Submissions"
-   page.
+1. The Request Extension form has a large text field so that the user can
+   state the reason for requesting an Extension.
+2. The Field Must not be blank.
+3. A meaningful error message is displayed if the field is blank and the user
+   tries to submit.
 
 ### TID-2: Display Submitted At Time in Submissions Table
 
 #### Story
 
-_As a User, I want to see the time my Extension was submitted at, so that I
+_As a Taxpayer, I want to see the time my Extension was submitted at, so that I
 can be confident it was sent before any legal deadlines.
 
 #### Acceptance Criteria
@@ -84,7 +104,20 @@ can be confident it was sent before any legal deadlines.
 3. The column displays the Date and Time when the request for an Extension was submitted.
 4. The Date and Time should display in local time and be formatted like: `8/19/2023 7:15:30 PM`.
 
-### TID-3
+### TID-2: Submit Extension Request
+
+#### Story
+
+_As a Taxpayer, I want to submit my Extension, so that the County receives my
+filing for an extension on my taxes._
+
+#### Acceptance Criteria
+
+1. The Application submits the Extension Request to the API via
+   `requestExtension` function in `./lib/api.ts`.
+2. The Taxpayer is redirected to the Submissions page.
+3. The recorded Submission returned from the API shows up on the "Submissions"
+   page.
 
 ### TID-4
 
