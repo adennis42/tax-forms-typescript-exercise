@@ -25,5 +25,6 @@ export type Listing = {
 
 export type Submission = {
   id: string;
+  createdAt: string;
   listing: Listing;
 }

@@ -19,7 +19,7 @@ import { claimListing, selectOpenListings } from "../redux/listings";
 import { useAppSelector } from "../lib/useAppSelector";
 import { Listing } from "../lib/applicationTypes";
 
-const ListingActions: React.FC<{ listing: Listing }> = ({
+const ListingRow: React.FC<{ listing: Listing }> = ({
   listing,
 }) => {
   const dispatch = useDispatch();
@@ -74,7 +74,7 @@ export default function Listings() {
 
             <TableBody>
               {listings.map((listing) =>
-                <ListingActions listing={listing} />
+                <ListingRow key={listing.id} listing={listing} />
               )}
             </TableBody>
           </Table>

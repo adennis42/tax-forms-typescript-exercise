@@ -1,6 +1,7 @@
-import listingsData from "../data/listings.json";
+import { v4 as uuidv4 } from "uuid";
 
-import { Listing } from "./applicationTypes";
+import listingsData from "../data/listings.json";
+import { Listing, Submission } from "./applicationTypes";
 
 /*\
 |* !!IMPORTANT!!
@@ -20,4 +21,18 @@ export const loadListings = () => {
   return Promise.resolve(
     listingsData as APIResponse<Listing>,
   );
+};
+
+// requestExtenion takes a listing object and "submits" it to our fictitious
+// API. The API will record this submission and return a "Submission" object.
+// For convenience, the Listing is returned a child of the newly recorded
+// Submission.
+export const requestExtension = (listing: Listing) => {
+  return new Promise<Submission>((resolve, reject) => {
+    setTimeout(() => resolve({
+      id: uuidv4(),
+      createdAt: new Date().toString(),
+      listing,
+    }), 500);
+  });
 };

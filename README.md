@@ -41,29 +41,56 @@ credentials are in the `users` Slice of the Redux store.
 
 ## Tasks
 
-| Task ID | Story |
+| Task ID | Description |
 |---------|-------|
-| TID-1   | |
-| TID-2   | |
-| TID-3   | |
+| TID-0   | [The Application Throws An Error On Initial Load](#tid-0-bug-the-application-throws-an-error-on-initial-load)|
+| TID-1   | [Submit Extenion Request](#tid-1-submit-extension-request)|
+| TID-2   | [Display Submitted At Time in Submissions Table](#display-submitted-at-time-in-submissions-table) |
+| TID-3   | []() |
+| TID-4   | []() |
+| TID-5   | []() |
+| TID-6   | []() |
 
-#### TID-0: BUG - The Application Throws An Error On Initial Load
+### TID-0: BUG The Application Throws An Error On Initial Load
 
 TODO: Bug it
 
-#### TID-1: Submit Extension Request
+### TID-1: Submit Extension Request
 
-__Story:__ _As a User, I want to submit my Extension, so that the County receives my filing for an extension on my taxes.
+#### Story
 
-#### TID-2
+_As a User, I want to submit my Extension, so that the County receives my
+filing for an extension on my taxes._
 
-#### TID-3
+#### Acceptance Criteria
 
-#### TID-4
+1. The Application submits the Extension Request to the API via
+   `requestExtension` function in `./lib/api.ts`.
+2. The User is redirected to the Submissions page.
+3. The recorded Submission returned from the API shows up on the "Submissions"
+   page.
 
-#### TID-5
+### TID-2: Display Submitted At Time in Submissions Table
 
-#### TID-6
+#### Story
+
+_As a User, I want to see the time my Extension was submitted at, so that I
+can be confident it was sent before any legal deadlines.
+
+#### Acceptance Criteria
+
+1. The Submissions table has a new Column called "Submitted At".
+2. The "Submitted At" column is the first column in the table.
+3. The column displays the Date and Time when the request for an Extension was submitted.
+4. The Date and Time should display in local time and be formatted like: `8/19/2023 7:15:30 PM`.
+
+### TID-3
+
+### TID-4
+
+### TID-5
+
+### TID-6
 
 ## Available Scripts
 

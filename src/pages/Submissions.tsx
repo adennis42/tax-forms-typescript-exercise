@@ -12,10 +12,11 @@ import {
   Typography,
 } from "@mui/material";
 
-import { Submission } from "../lib/applicationTypes";
+import { useAppSelector } from "../lib/useAppSelector";
+import { selectSubmissions } from "../redux/submissions";
 
 export default function Submissions() {
-  const submissions: Submission[] = [];
+  const submissions = useAppSelector(selectSubmissions);
 
   return (
     <Box sx={{ mt: 2 }}>
@@ -28,7 +29,6 @@ export default function Submissions() {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>Submitted At</TableCell>
                 <TableCell>Name</TableCell>
                 <TableCell>Address</TableCell>
                 <TableCell>City</TableCell>
@@ -38,7 +38,19 @@ export default function Submissions() {
             </TableHead>
 
             <TableBody>
-              {submissions.map((submission) => null)}
+              {submissions.map((submission) => {
+                const { listing } = submission;
+
+                return (
+                  <TableRow key={submission.id}>
+                    <TableCell>{listing.name}</TableCell>
+                    <TableCell>{listing.physicalAddress.address1}</TableCell>
+                    <TableCell>{listing.physicalAddress.city}</TableCell>
+                    <TableCell>{listing.physicalAddress.state}</TableCell>
+                    <TableCell>{listing.physicalAddress.zip}</TableCell>
+                  </TableRow>
+                );
+              })}
             </TableBody>
           </Table>
         </TableContainer>
