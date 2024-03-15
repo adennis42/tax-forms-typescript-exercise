@@ -34,6 +34,7 @@ export default function Submissions() {
                 <TableCell>City</TableCell>
                 <TableCell>State</TableCell>
                 <TableCell>Zip</TableCell>
+                <TableCell>Reason</TableCell>
               </TableRow>
             </TableHead>
 
@@ -48,6 +49,14 @@ export default function Submissions() {
                     <TableCell>{listing.physicalAddress.city}</TableCell>
                     <TableCell>{listing.physicalAddress.state}</TableCell>
                     <TableCell>{listing.physicalAddress.zip}</TableCell>
+                    <TableCell sx={{
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      textWrap: "nowrap",
+                      maxWidth: "200px",
+                    }}>
+                      {submission.reason}
+                    </TableCell>
                   </TableRow>
                 );
               })}

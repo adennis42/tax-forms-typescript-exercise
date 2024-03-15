@@ -9,7 +9,18 @@ export type ListingsSlice = {
 
 const initialState: ListingsSlice = {
   open: [],
-  claimed: [],
+  claimed: [{
+    id: "listing-6",
+    name: "ROYAL CHARTER ENERGY",
+    physicalAddress: {
+      address1: "1 New Terra Ln.",
+      address2: "",
+      city: "Charlotte",
+      state: "NC",
+      zip: "14573",
+    },
+    mailingAddress: null,
+  }],
 };
 
 const listingsSlice = createSlice({

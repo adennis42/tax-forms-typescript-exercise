@@ -27,7 +27,14 @@ export default function Home() {
               to={"/listings"}
               sx={{ my: 2, color: 'white', display: 'block' }}
             >
-              Listings
+              Open Listings
+            </Button>
+            <Button
+              component={Link}
+              to={"/claimed"}
+              sx={{ my: 2, color: 'white', display: 'block' }}
+            >
+              My Listings
             </Button>
             <Button
               component={Link}
