@@ -35,6 +35,23 @@ to record the Submission on the server and with the County.
 Unfortunately, time tables are tight, and the last dev got pulled off this
 project before he could finish implementing all of the necessary features...
 
+
+## Contributing to this Git Repository
+
+At Reason Consulting, we spend much of our time writing software for State or
+Local governments and are thus subject to certain security controls. One of
+those is that we can track all commits on our repositories back to the work
+items (i.e. "Tickets") for which the commit was made. We do this by prefixing
+the commit message with the Ticket number in square brackets. When you commit
+to this repository, please write you commit message in the following format:
+
+```
+[TID-XX] My normal commit message goes here.
+```
+
+Where, `XX` is replaced by the appropriate numeric ID. All of the features you
+will be asked to add having a Ticket ID associated with them.
+
 ## A Word on Typescipt
 
 > [!IMPORTANT]
