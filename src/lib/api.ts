@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 
 import listingsData from "../data/listings.json";
+import statementData from "../data/statements.json";
 import { Listing, Submission } from "./applicationTypes";
 
 /*\
@@ -34,4 +35,59 @@ export const requestExtension = (submission: Submission) => {
       createdAt: new Date().toString(),
     }), 500);
   });
+};
+
+// Mock statements API.
+let statementsApiState = statementData;
+
+export const loadStatements = () => {
+  return Promise.resolve(
+    statementsApiState as APIResponse<unknown>,
+  );
+};
+
+export const updateStatement = (updatedStatement: unknown) => {
+  if (typeof updatedStatement !== "object" || !updatedStatement) {
+    return Promise.reject("Invalid statement received");
+  }
+
+  const statementAsRecord = updatedStatement as Record<string, any>;
+  const newState = statementsApiState.data.reduce((acc, statement) => {
+    if (statement.id !== statementAsRecord.id) {
+      return [
+        ...acc,
+        statement,
+      ];
+    }
+    return [
+      ...acc,
+        {
+          ...statement,
+          name: statementAsRecord.name,
+          contactInformation: statementAsRecord.contactInformation,
+        },
+    ];
+  }, [] as any[]);
+
+  statementsApiState = { data: newState };
+  return Promise.resolve(updatedStatement);
+};
+
+export const createStatement = (newStatement: any) => {
+  if (typeof newStatement !== "object" || !newStatement) {
+    return Promise.reject("Invalid statement received");
+  }
+
+  const withId = {
+    id: uuidv4(),
+    ...newStatement,
+  };
+
+  const newState = [
+    ...statementsApiState?.data,
+    withId,
+  ];
+
+  statementsApiState = { data: newState };
+  return Promise.resolve(withId);
 };
