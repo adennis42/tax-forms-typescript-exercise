@@ -111,14 +111,14 @@ useful.
 
 ## Tasks
 
-| Task ID | Description |
-|---------|-------|
-| TID-1   | [Add Reason as Required Text Field ](#tid-1-add-reason-as-required-text-field) |
-| TID-2   | [Display Submitted At Time in Submissions Table](#tid-2-display-submitted-at-time-in-submissions-table) |
-| TID-3   | [Submit Extenion Request](#tid-3-submit-extension-request)|
-| TID-4   | [New Statements Page](#tid-4-new-statements-page) |
-| TID-5   | [Create a New Statement](#tid-5-create-a-new-statement) |
-| TID-6   | [Update My Statements](#tid-6-update-my-statements) |
+| Task ID | Expections | Description |
+|---------|------------|-------------|
+| TID-1   | Junior and Mid (REQUIRED) |[Add Reason as Required Text Field ](#tid-1-add-reason-as-required-text-field) |
+| TID-2   | Junior and Mid (REQUIRED) |[Display Submitted At Time in Submissions Table](#tid-2-display-submitted-at-time-in-submissions-table) |
+| TID-3   | Junior and Mid (REQUIRED) |[Submit Extenion Request](#tid-3-submit-extension-request)|
+| TID-4   | Mid (REQUIRED) |[New Statements Page](#tid-4-new-statements-page) |
+| TID-5   | Mid (REQUIRED) |[Create a New Statement](#tid-5-create-a-new-statement) |
+| TID-6   | Optional  |[Update My Statements](#tid-6-update-my-statements) |
 
 > [!IMPORTANT]
 > JUNIORS!
@@ -127,7 +127,9 @@ useful.
 
 > [!IMPORTANT]
 > MID-LEVEL AND UP
-> You are expected to complete all of the tasks in the table above.
+> You are expected to complete tasks 1-5 in the table above.
+
+In all cases, TID-6 is considered optional.
 
 ### TID-1: Add Reason as Required Text Field 
 
