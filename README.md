@@ -129,7 +129,8 @@ for filing an extension, so that we can better audit Extension filings._
 
 1. The Request Extension form has a large text field so that the user can
    state the reason for requesting an Extension.
-2. The Field Must not be blank.
+2. The Field Must not be blank, and an error is shown if the user tries to
+   submit an empty reason.
 3. A meaningful error message is displayed if the field is blank and the user
    tries to submit.
 
