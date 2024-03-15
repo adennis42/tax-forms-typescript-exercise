@@ -1,6 +1,5 @@
-import React, { useCallback } from "react";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import React from "react";
+import { Link } from "react-router-dom";
 import {
   Box,
   Button,
@@ -15,36 +14,8 @@ import {
   Typography,
 } from "@mui/material";
 
-import { claimListing, selectClaimedListings } from "../redux/listings";
+import { selectClaimedListings } from "../redux/listings";
 import { useAppSelector } from "../lib/useAppSelector";
-import { Listing } from "../lib/applicationTypes";
-
-const ListingRow: React.FC<{ listing: Listing }> = ({
-  listing,
-}) => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const handleClaim = useCallback(() => {
-    dispatch(claimListing(listing));
-    navigate(`/claimed/${listing.id}`);
-  }, [dispatch, navigate, listing])
-  
-  return (
-    <TableRow key={listing.id}>
-      <TableCell>{listing.name}</TableCell>
-      <TableCell>{listing.physicalAddress.address1}</TableCell>
-      <TableCell>{listing.physicalAddress.city}</TableCell>
-      <TableCell>{listing.physicalAddress.state}</TableCell>
-      <TableCell>{listing.physicalAddress.zip}</TableCell>
-      <TableCell>
-        <Button onClick={handleClaim}>
-          Request Extension
-        </Button>
-      </TableCell>
-    </TableRow>
-  );
-};
 
 export default function MyListings() {
   // Use a selector to get the open listings from the Redux store. Please note
@@ -74,7 +45,18 @@ export default function MyListings() {
 
             <TableBody>
               {claimedListings.map((listing) =>
-                <ListingRow key={listing.id} listing={listing} />
+                <TableRow key={listing.id}>
+                  <TableCell>{listing.name}</TableCell>
+                  <TableCell>{listing.physicalAddress.address1}</TableCell>
+                  <TableCell>{listing.physicalAddress.city}</TableCell>
+                  <TableCell>{listing.physicalAddress.state}</TableCell>
+                  <TableCell>{listing.physicalAddress.zip}</TableCell>
+                  <TableCell>
+                    <Button component={Link} to={`/claimed/${listing.id}`}>
+                      Request Extension
+                    </Button>
+                  </TableCell>
+                </TableRow>
               )}
             </TableBody>
           </Table>
