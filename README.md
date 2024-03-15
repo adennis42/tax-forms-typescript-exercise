@@ -114,9 +114,18 @@ useful.
 | TID-1   | [Add Reason as Required Text Field ](#tid-1-add-reason-as-required-text-field) |
 | TID-2   | [Display Submitted At Time in Submissions Table](#tid-2-display-submitted-at-time-in-submissions-table) |
 | TID-3   | [Submit Extenion Request](#tid-3-submit-extension-request)|
-| TID-4   | []() |
-| TID-5   | []() |
-| TID-6   | []() |
+| TID-4   | [New Statements Page](#tid-4-new-statements-page) |
+| TID-5   | [Create a New Statement](#tid-5-create-a-new-statement) |
+| TID-6   | [Update My Statements](#tid-6-update-my-statements) |
+
+> [!IMPORTANT]
+> JUNIORS!
+> You are expected to complete tasks 1-3 in the table above. We also encourage
+> you to complete as many of the later tasks as possible.
+
+> [!IMPORTANT]
+> MID-LEVEL AND UP
+> You are expected to complete all of the tasks in the table above.
 
 ### TID-1: Add Reason as Required Text Field 
 
@@ -164,11 +173,59 @@ filing for an extension on my taxes._
 3. The recorded Submission returned from the API shows up on the "Submissions"
    page.
 
-### TID-4
+### TID-4: New Statements Page
 
-### TID-5
+#### Story
 
-### TID-6
+_As a Taxpayer, I want to see a list of all of my Statements, so that I can
+track their progress._
+
+#### Acceptance Criteria
+
+1. A new "My Statement" page is added to the Application.
+2. The user can navigate to it via a "My Statements" link in the top
+   navigation.
+3. The Application loads the User's Statements from the API via the
+   `loadStatements` function in `./lib/api.ts`.
+4. The data is stored in Redux.
+5. The `name` and all attributes of `contactInformation` are displayed in a
+   Table for the Taxpayer.
+
+### TID-5: Create a New Statement
+
+#### Story
+
+_As a Taxpayer, I want to create new Statements, so that I can file with the
+County._
+
+#### Acceptance Criteria
+
+1. A "Create Statement" button is added to the "My Statements" page.
+2. The user is presented a form where they can fill out
+    - The Name of the business. (Required in order to submit)
+    - The Contact Information for the business.
+3. They can submit their statement to the API via the `createStatement`
+   function in `./lib/api.ts`.
+4. They are redirected to the "My Statements" page after successfully
+   submitting their Statement.
+
+### TID-6: Update My Statements
+
+#### Story
+
+_As a Taxpayer, I want to update my Statements, so that I can keep them up to
+date with the County._
+
+#### Acceptance Criteria
+
+1. Their is an "Update" button for every Statement in the "My Statements"
+   table.
+2. Clicking the "Update" button takes the user to a form where they can see
+   existing values. The fields and requirements are the same as the "Create
+   Statement Form" from TID-5.
+3. They can submit the form to the API via the `updateStatement` function in
+   `./lib/api.ts`.
+4. They are redirected to the "My Statements" page on successfully submitting.
 
 ## Available Scripts
 
