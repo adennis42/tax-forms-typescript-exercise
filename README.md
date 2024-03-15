@@ -52,7 +52,7 @@ to this repository, please write you commit message in the following format:
 Where, `XX` is replaced by the appropriate numeric ID. All of the features you
 will be asked to add having a Ticket ID associated with them.
 
-## A Word on Typescipt
+## A Word on Typescript
 
 > [!IMPORTANT]
 > This section is only relevant if you are applying for a junior position at
@@ -88,7 +88,7 @@ libraries to the architecture are:
 |---------|-------------|
 | `react` | You know this one |
 | `react-router-dom` | React Router controls rendering specific components based on the current URL, the Browser's history, and navigating between pages. |
-| `@reduxjs/toolkit` | The offical, batteries-included library for setting up ReduxJS as a frontend data store |
+| `@reduxjs/toolkit` | The official, batteries-included library for setting up ReduxJS as a frontend data store |
 | `react-redux` | The official React bindings for Redux |
 | `formik` | Formik is a simple ReactJS form library. It saves us from writing a lot of boilerplate as opposed to using `form` and `input` HTML Elements |
 | `@mui/material` | The Material UI library provides clean, basic styling via a rich component library |
@@ -106,6 +106,8 @@ credentials are in the `users` Slice of the Redux store.
 HINT: If you are new to ReduxJS, we strongly recommend that you check out the
 offical browser extensions. This is by no means required, but tends to be
 useful.
+
+[ReduxJS Dev Tools (Chrome)](https://github.com/reduxjs/redux-devtools)
 
 ## Tasks
 
@@ -182,7 +184,7 @@ track their progress._
 
 #### Acceptance Criteria
 
-1. A new "My Statement" page is added to the Application.
+1. A new "My Statements" page is added to the Application.
 2. The user can navigate to it via a "My Statements" link in the top
    navigation.
 3. The Application loads the User's Statements from the API via the
