@@ -48,7 +48,7 @@ libraries to the architecture are:
 | `@reduxjs/toolkit` | The offical, batteries-included library for setting up ReduxJS as a frontend data store |
 | `react-redux` | The official React bindings for Redux |
 | `formik` | Formik is a simple ReactJS form library. It saves us from writing a lot of boilerplate as opposed to using `form` and `input` HTML Elements |
-| `@mui/material` | The Material UI library provides clean, basic styling with via a rich component library |
+| `@mui/material` | The Material UI library provides clean, basic styling via a rich component library |
 
 You are free to add additional libraries if you feel the application would
 benefit from it.
@@ -95,7 +95,7 @@ for filing an extension, so that we can better audit Extension filings._
 #### Story
 
 _As a Taxpayer, I want to see the time my Extension was submitted at, so that I
-can be confident it was sent before any legal deadlines.
+can be confident it was sent before any legal deadlines._
 
 #### Acceptance Criteria
 
@@ -114,7 +114,8 @@ filing for an extension on my taxes._
 #### Acceptance Criteria
 
 1. The Application submits the Extension Request to the API via
-   `requestExtension` function in `./lib/api.ts`.
+   `requestExtension` function in `./lib/api.ts` when the "Submit Request"
+   button in the form is clicked.
 2. The Taxpayer is redirected to the Submissions page.
 3. The recorded Submission returned from the API shows up on the "Submissions"
    page.
@@ -131,25 +132,25 @@ In the project directory, you can run:
 
 ### `yarn start`
 
-Runs the app in the development mode.\ Open
+Runs the app in the development mode. Open
 [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\ You will also see any lint errors in
+The page will reload if you make edits. You will also see any lint errors in
 the console.
 
 ### `yarn test`
 
-Launches the test runner in the interactive watch mode.\ See the section about
+Launches the test runner in the interactive watch mode. See the section about
 [running
 tests](https://facebook.github.io/create-react-app/docs/running-tests) for
 more information.
 
 ### `yarn build`
 
-Builds the app for production to the `build` folder.\ It correctly bundles
+Builds the app for production to the `build` folder. It correctly bundles
 React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\ Your app is ready
+The build is minified and the filenames include the hashes. Your app is ready
 to be deployed!
 
 See the section about

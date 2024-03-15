@@ -23,16 +23,15 @@ export const loadListings = () => {
   );
 };
 
-// requestExtenion takes a listing object and "submits" it to our fictitious
-// API. The API will record this submission and return a "Submission" object.
-// For convenience, the Listing is returned a child of the newly recorded
-// Submission.
-export const requestExtension = (listing: Listing) => {
+// requestExtenion takes a Submission object and "submits" it to our
+// fictitious API. The API will record this Submission and populate its `id`
+// and `createdAt` fields with values from the "server".
+export const requestExtension = (submission: Submission) => {
   return new Promise<Submission>((resolve, reject) => {
     setTimeout(() => resolve({
+      ...submission,
       id: uuidv4(),
       createdAt: new Date().toString(),
-      listing,
     }), 500);
   });
 };

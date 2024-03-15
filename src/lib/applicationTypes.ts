@@ -24,7 +24,8 @@ export type Listing = {
 }
 
 export type Submission = {
-  id: string;
-  createdAt: string;
+  id?: string;
   listing: Listing;
+  createdAt?: string;
+  reason?: string;
 }
