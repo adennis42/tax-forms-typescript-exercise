@@ -35,6 +35,32 @@ to record the Submission on the server and with the County.
 Unfortunately, time tables are tight, and the last dev got pulled off this
 project before he could finish implementing all of the necessary features...
 
+## A Word on Typescipt
+
+> [!IMPORTANT]
+> This section is only relevant if you are applying for a junior position at
+> Reason Consulting. Mid level developers and above are expected to work
+> within the Typescript language.
+
+The application is written in Typescript, as that is Reason Consulting's
+frontend language of choice. However, we understand that many very capable
+junior applicants are not familiar with that language. We at Reason are not
+interested in applicants getting stuck on the nitty-gritty of Typescript if
+they are capable of creating the solution in Javascript. In order to avoid
+this, the TS config for this application is set to allow Javascript files in
+addition to Typescript.
+
+If you are applying for a junior position, you may write Javascript and/or
+convert existing Typescript code to Javascript as you feel necessary.
+
+In addition to allowing JS files, you may turn down Typescript's strictness.
+If you wish to do so, you may uncomment the "PERMISSIVE" mode settings in
+`./tsconfig.json`. Be sure to remove the prior "STRICT" mode settings if you
+do so.
+
+That being said, you **are** encouraged to attempt the challenges in
+Typescript.
+
 ## Architecture
 
 The application's Architecture relies on React and popular React libraries to
