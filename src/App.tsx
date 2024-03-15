@@ -7,6 +7,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import Listings from "./pages/Listings";
 import Listing from "./pages/Listing";
+import MyListings from "./pages/MyListings";
 import Submissions from "./pages/Submissions";
 import store from "./redux";
 
@@ -20,7 +21,11 @@ const router = createBrowserRouter([
         element: <Listings />,
       },
       {
-        path: "listings/:id",
+        path: "claimed",
+        element: <MyListings />,
+      },
+      {
+        path: "claimed/:id",
         element: <Listing />,
       },
       {

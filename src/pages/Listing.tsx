@@ -5,6 +5,7 @@ import { Box, Button, Container, Grid, Paper, TextField, Typography } from "@mui
 
 import { selectClaimedListingById } from "../redux/listings";
 import { useAppSelector } from "../lib/useAppSelector";
+import { Submission } from "../lib/applicationTypes";
 
 type AppFieldProps = {
   label: string;
@@ -23,6 +24,8 @@ const AppField: React.FC<AppFieldProps> = ({
   sx,
 }) => {
   const [field] = useField(name);
+  const value = field.value || "";
+
   return (
     <TextField
       fullWidth
@@ -45,6 +48,10 @@ export default function Listing() {
     );
   }
 
+  const initialValues: Submission = {
+    listing,
+  };
+
   return (
     <Container sx={{ mt: 2 }}>
       <Paper sx={{ p: 5, mt: 2 }}>
@@ -53,11 +60,11 @@ export default function Listing() {
         </Typography>
 
         <Formik
-          initialValues={listing}
+          initialValues={initialValues}
           onSubmit={() => {}}
         >
           <Form>
-            <AppField label="Name" name="name" />
+            <AppField label="Name" name="listing.name" />
 
             <Box sx={{ mt: 3 }}>
               <Typography variant="h6">
@@ -65,19 +72,33 @@ export default function Listing() {
               </Typography>
               <Grid container spacing={2}>
                 <Grid item xs={3}>
-                  <AppField label="Address 1" name="mailingAddress.address1" />
+                  <AppField
+                    label="Address 1"
+                    name="listing.mailingAddress.address1"/>
                 </Grid>
                 <Grid item xs={3}>
-                  <AppField label="Address 2" name="mailingAddress.address2" />
+                  <AppField
+                    label="Address 2"
+                    name="listing.mailingAddress.address2"
+                  />
                 </Grid>
                 <Grid item xs={2}>
-                  <AppField label="City" name="mailingAddress.city" />
+                  <AppField
+                    label="City"
+                    name="listing.mailingAddress.city"
+                  />
                 </Grid>
                 <Grid item xs={2}>
-                  <AppField label="State" name="mailingAddress.state" />
+                  <AppField
+                    label="State"
+                    name="listing.mailingAddress.state"
+                  />
                 </Grid>
                 <Grid item xs={2}>
-                  <AppField label="Zip" name="mailingAddress.zip" />
+                  <AppField
+                    label="Zip"
+                    name="listing.mailingAddress.zip"
+                  />
                 </Grid>
               </Grid>
             </Box>
@@ -88,19 +109,34 @@ export default function Listing() {
               </Typography>
               <Grid container spacing={2}>
                 <Grid item xs={3}>
-                  <AppField label="Address 1" name="physicalAddress.address1" />
+                  <AppField
+                    label="Address 1"
+                    name="listing.physicalAddress.address1"
+                  />
                 </Grid>
                 <Grid item xs={3}>
-                  <AppField label="Address 2" name="physicalAddress.address2" />
+                  <AppField
+                    label="Address 2"
+                    name="listing.physicalAddress.address2"
+                  />
                 </Grid>
                 <Grid item xs={2}>
-                  <AppField label="City" name="physicalAddress.city" />
+                  <AppField
+                    label="City"
+                    name="listing.physicalAddress.city"
+                  />
                 </Grid>
                 <Grid item xs={2}>
-                  <AppField label="State" name="physicalAddress.state" />
+                  <AppField
+                    label="State"
+                    name="listing.physicalAddress.state"
+                  />
                 </Grid>
                 <Grid item xs={2}>
-                  <AppField label="Zip" name="physicalAddress.zip" />
+                  <AppField
+                    label="Zip"
+                    name="listing.physicalAddress.zip"
+                  />
                 </Grid>
               </Grid>
             </Box>

@@ -35,6 +35,49 @@ to record the Submission on the server and with the County.
 Unfortunately, time tables are tight, and the last dev got pulled off this
 project before he could finish implementing all of the necessary features...
 
+
+## Contributing to this Git Repository
+
+At Reason Consulting, we spend much of our time writing software for State or
+Local governments and are thus subject to certain security controls. One of
+those is that we can track all commits on our repositories back to the work
+items (i.e. "Tickets") for which the commit was made. We do this by prefixing
+the commit message with the Ticket number in square brackets. When you commit
+to this repository, please write you commit message in the following format:
+
+```
+[TID-XX] My normal commit message goes here.
+```
+
+Where, `XX` is replaced by the appropriate numeric ID. All of the features you
+will be asked to add having a Ticket ID associated with them.
+
+## A Word on Typescipt
+
+> [!IMPORTANT]
+> This section is only relevant if you are applying for a junior position at
+> Reason Consulting. Mid level developers and above are expected to work
+> within the Typescript language.
+
+The application is written in Typescript, as that is Reason Consulting's
+frontend language of choice. However, we understand that many very capable
+junior applicants are not familiar with that language. We at Reason are not
+interested in applicants getting stuck on the nitty-gritty of Typescript if
+they are capable of creating the solution in Javascript. In order to avoid
+this, the TS config for this application is set to allow Javascript files in
+addition to Typescript.
+
+If you are applying for a junior position, you may write Javascript and/or
+convert existing Typescript code to Javascript as you feel necessary.
+
+In addition to allowing JS files, you may turn down Typescript's strictness.
+If you wish to do so, you may uncomment the "PERMISSIVE" mode settings in
+`./tsconfig.json`. Be sure to remove the prior "STRICT" mode settings if you
+do so.
+
+That being said, you **are** encouraged to attempt the challenges in
+Typescript.
+
 ## Architecture
 
 The application's Architecture relies on React and popular React libraries to
@@ -48,7 +91,7 @@ libraries to the architecture are:
 | `@reduxjs/toolkit` | The offical, batteries-included library for setting up ReduxJS as a frontend data store |
 | `react-redux` | The official React bindings for Redux |
 | `formik` | Formik is a simple ReactJS form library. It saves us from writing a lot of boilerplate as opposed to using `form` and `input` HTML Elements |
-| `@mui/material` | The Material UI library provides clean, basic styling with via a rich component library |
+| `@mui/material` | The Material UI library provides clean, basic styling via a rich component library |
 
 You are free to add additional libraries if you feel the application would
 benefit from it.
@@ -95,7 +138,7 @@ for filing an extension, so that we can better audit Extension filings._
 #### Story
 
 _As a Taxpayer, I want to see the time my Extension was submitted at, so that I
-can be confident it was sent before any legal deadlines.
+can be confident it was sent before any legal deadlines._
 
 #### Acceptance Criteria
 
@@ -114,7 +157,8 @@ filing for an extension on my taxes._
 #### Acceptance Criteria
 
 1. The Application submits the Extension Request to the API via
-   `requestExtension` function in `./lib/api.ts`.
+   `requestExtension` function in `./lib/api.ts` when the "Submit Request"
+   button in the form is clicked.
 2. The Taxpayer is redirected to the Submissions page.
 3. The recorded Submission returned from the API shows up on the "Submissions"
    page.
@@ -131,25 +175,25 @@ In the project directory, you can run:
 
 ### `yarn start`
 
-Runs the app in the development mode.\ Open
+Runs the app in the development mode. Open
 [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\ You will also see any lint errors in
+The page will reload if you make edits. You will also see any lint errors in
 the console.
 
 ### `yarn test`
 
-Launches the test runner in the interactive watch mode.\ See the section about
+Launches the test runner in the interactive watch mode. See the section about
 [running
 tests](https://facebook.github.io/create-react-app/docs/running-tests) for
 more information.
 
 ### `yarn build`
 
-Builds the app for production to the `build` folder.\ It correctly bundles
+Builds the app for production to the `build` folder. It correctly bundles
 React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\ Your app is ready
+The build is minified and the filenames include the hashes. Your app is ready
 to be deployed!
 
 See the section about

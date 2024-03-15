@@ -15,7 +15,7 @@ import {
   Typography,
 } from "@mui/material";
 
-import { claimListing, selectOpenListings } from "../redux/listings";
+import { claimListing, selectClaimedListings } from "../redux/listings";
 import { useAppSelector } from "../lib/useAppSelector";
 import { Listing } from "../lib/applicationTypes";
 
@@ -39,25 +39,25 @@ const ListingRow: React.FC<{ listing: Listing }> = ({
       <TableCell>{listing.physicalAddress.zip}</TableCell>
       <TableCell>
         <Button onClick={handleClaim}>
-          Claim Listing
+          Request Extension
         </Button>
       </TableCell>
     </TableRow>
   );
 };
 
-export default function Listings() {
+export default function MyListings() {
   // Use a selector to get the open listings from the Redux store. Please note
   // that the behavior of useAppSelector is identical to useSelector from
   // react-redux, but we don't have to spell out the types every time.
-  const listings = useAppSelector(selectOpenListings);
+  const claimedListings = useAppSelector(selectClaimedListings);
 
   return (
     <Box sx={{ mt: 2 }}>
       <Container>
         <TableContainer component={Paper}>
          <Typography variant="h4" sx={{ m: 1 }}>
-          Open Listings
+          My Claimed Listings
          </Typography>
 
           <Table>
@@ -73,7 +73,7 @@ export default function Listings() {
             </TableHead>
 
             <TableBody>
-              {listings.map((listing) =>
+              {claimedListings.map((listing) =>
                 <ListingRow key={listing.id} listing={listing} />
               )}
             </TableBody>

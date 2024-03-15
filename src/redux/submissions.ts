@@ -9,8 +9,9 @@ export type SubmissionsSlice = {
 
 const initialState: SubmissionsSlice = {
   submissions: [{
-    id: "111-222-333-4444",
+    id: "b2b3d354-91f1-45a7-a7bf-41dd6544f81a",
     createdAt: new Date("August 19, 2023 23:15:30 GMT+00:00").toString(),
+    reason: "Protomolecule experiment escaped lab, went ham on Ganymede, and destroyed our accounting dept.",
     listing: {
       id: "listing-5",
       name: "PROTOGEN",
