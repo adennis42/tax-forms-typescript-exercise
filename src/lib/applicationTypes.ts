@@ -29,3 +29,17 @@ export type Submission = {
   createdAt?: string;
   reason?: string;
 }
+
+type ContactInformation = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+}
+
+export type Statement = {
+  id: string;
+  name: string;
+  contactInformation: ContactInformation;
+  createdAt: string;
+}

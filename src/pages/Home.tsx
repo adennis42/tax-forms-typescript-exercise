@@ -3,8 +3,10 @@ import { useDispatch } from "react-redux";
 import { Link, Outlet } from "react-router-dom";
 import { AppBar, Box, Button, Container } from "@mui/material";
 
-import { loadListings } from "../lib/api";
+import { loadListings, loadStatements } from "../lib/api";
 import { initOpenListings } from "../redux/listings";
+import { initStatements } from "../redux/statements";
+import { Statement } from "../lib/applicationTypes";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -14,6 +16,9 @@ export default function Home() {
   useEffect(() => {
     loadListings().then((listingsData) => {
       dispatch(initOpenListings(listingsData.data));
+    });
+    loadStatements().then((statementsData) => { 
+      dispatch(initStatements(statementsData.data));
     });
   }, [dispatch]);
 
@@ -35,6 +40,13 @@ export default function Home() {
               sx={{ my: 2, color: 'white', display: 'block' }}
             >
               My Listings
+            </Button>
+            <Button
+              component={Link}
+              to={"/statements"}
+              sx={{ my: 2, color: 'white', display: 'block' }}
+            >
+              My Statements
             </Button>
             <Button
               component={Link}
