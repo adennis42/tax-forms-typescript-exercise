@@ -1,12 +1,16 @@
 import React, { ComponentProps } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Formik, Form, useField } from "formik";
 import * as Yup from "yup";
 import { Box, Button, Container, Grid, Paper, TextField, Typography } from "@mui/material";
+import { useDispatch } from "react-redux";
 
 import { selectClaimedListingById } from "../redux/listings";
 import { useAppSelector } from "../lib/useAppSelector";
 import { Submission } from "../lib/applicationTypes";
+import { requestExtension } from "../lib/api";
+import { addSubmission } from "../redux/submissions";
+
 
 type AppFieldProps = {
   label: string;
@@ -82,6 +86,8 @@ const validationSchema = Yup.object({
 export default function Listing() {
   const { id = null } = useParams();
   const listing = useAppSelector((state) => selectClaimedListingById(state, id))
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   if (!listing) {
     return (
@@ -92,6 +98,18 @@ export default function Listing() {
   const initialValues: Submission = {
     listing,
   };
+
+  const handleSubmit = async (values: Submission) => { 
+    try {
+      const response = await requestExtension(values);
+      console.log("Response", response);
+      dispatch(addSubmission(response));
+      navigate("/submissions");
+    } catch (error) {
+      console.error("Failed to submit extension request", error);
+    }
+    
+  }
 
   return (
     <Container sx={{ mt: 2 }}>
@@ -104,11 +122,11 @@ export default function Listing() {
           initialValues={initialValues}
           validationSchema={validationSchema}
           onSubmit={(values, { setSubmitting }) => {
-            console.log(values);
+            handleSubmit(values);
             setSubmitting(false);
           }}
         >
-          {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
+          {({ errors,  handleSubmit }) => (
             <Form onSubmit={handleSubmit} noValidate>
               <AppField label="Name" name="listing.name" />
 
