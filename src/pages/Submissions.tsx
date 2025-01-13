@@ -15,6 +15,12 @@ import {
 import { useAppSelector } from "../lib/useAppSelector";
 import { selectSubmissions } from "../redux/submissions";
 
+function formatDateTime(date?: string) {
+  if (!date) {
+    return "";
+  }
+  return new Date(date).toLocaleString();
+}
 export default function Submissions() {
   const submissions = useAppSelector(selectSubmissions);
 
@@ -22,13 +28,14 @@ export default function Submissions() {
     <Box sx={{ mt: 2 }}>
       <Container>
         <TableContainer component={Paper}>
-         <Typography variant="h4" sx={{ m: 1 }}>
-          My Submissions
-         </Typography>
+          <Typography variant="h4" sx={{ m: 1 }}>
+            My Submissions
+          </Typography>
 
           <Table>
             <TableHead>
               <TableRow>
+                <TableCell>Submitted At</TableCell>
                 <TableCell>Name</TableCell>
                 <TableCell>Address</TableCell>
                 <TableCell>City</TableCell>
@@ -44,6 +51,7 @@ export default function Submissions() {
 
                 return (
                   <TableRow key={submission.id}>
+                    <TableCell>{formatDateTime(submission.createdAt)}</TableCell>
                     <TableCell>{listing.name}</TableCell>
                     <TableCell>{listing.physicalAddress.address1}</TableCell>
                     <TableCell>{listing.physicalAddress.city}</TableCell>
