@@ -1,9 +1,9 @@
+import React, { useCallback } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
 import { Box, Button, Container, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
 import { useAppSelector } from "../lib/useAppSelector";
 import { selectStatements } from "../redux/statements";
-import { useCallback } from "react";
-import { useNavigate } from "react-router-dom";
-
 
 export default function MyStatements() {
     const statements = useAppSelector(selectStatements);
@@ -45,6 +45,11 @@ export default function MyStatements() {
                                         <TableCell>{statement.contactInformation.email}</TableCell>
                                         <TableCell>{statement.contactInformation.phoneNumber}</TableCell>
                                         <TableCell>{statement.createdAt}</TableCell>
+                                        <TableCell>
+                                            <Button component={Link} to={`/update-statement/${statement.id}`}>
+                                                Update
+                                            </Button>
+                                        </TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>

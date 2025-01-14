@@ -41,7 +41,11 @@ const router = createBrowserRouter([
       {
         path: "create-statement",
         element: <StatementForm />
-      }
+      },
+      {
+        path: "update-statement/:id",
+        element: <StatementForm />
+      },
     ],
   },
 ]);

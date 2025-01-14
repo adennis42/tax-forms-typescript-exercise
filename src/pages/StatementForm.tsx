@@ -1,13 +1,15 @@
 import React, { ComponentProps } from "react";
-import { Form, useNavigate } from "react-router-dom";
+import { Form, useNavigate, useParams } from "react-router-dom";
 
 import { Box, Button, Container, Grid, Paper, TextField, Typography } from "@mui/material";
 import { Formik, useField } from "formik";
 import * as Yup from "yup";
 
-import { createStatement } from "../lib/api";
-import { addStatement } from "../redux/statements";
+import { createStatement, updateStatement } from "../lib/api";
+import { addStatement, editStatement, selectStatementById } from "../redux/statements";
 import { useDispatch } from "react-redux";
+import { useAppSelector } from "../lib/useAppSelector";
+import { Statement } from "../lib/applicationTypes";
 
 type AppFieldProps = {
     label: string;
@@ -45,10 +47,12 @@ const validationSchema = Yup.object({
 });
 
 export default function StatementForm() {
+    const { id = null } = useParams();
+    const statement = useAppSelector((state) => selectStatementById(state, id));
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const initialValues = {
+    const initialValues = statement || {
         name: "",
         contactInformation: {
             firstName: "",
@@ -60,9 +64,15 @@ export default function StatementForm() {
 
     const handleSubmit = async (values: any) => {
         try {
-            const response = await createStatement(values);
-            dispatch(addStatement(response));
-            navigate("/statements");
+            if (statement) {
+                const response = await updateStatement(values);
+                dispatch(editStatement(response as Statement));
+                navigate("/statements");
+            } else {
+                const response = await createStatement(values);
+                dispatch(addStatement(response));
+                navigate("/statements");
+            }
         } catch (error) {
             console.error(error);
         }
@@ -71,7 +81,7 @@ export default function StatementForm() {
         <Container sx={{ mt: 2 }}>
             <Paper sx={{ p: 5, mt: 2 }}>
                 <Typography variant="h5" sx={{ mb: 2 }}>
-                    Create A Statement
+                    {statement ? "Update" : "Create"} Statement
                 </Typography>
                 <Formik
                     initialValues={initialValues}
