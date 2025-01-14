@@ -17,12 +17,16 @@ const statementsSlice = createSlice({
     reducers: {
         initStatements: (state, action: PayloadAction<Statement[]>) => {
             state.statements = action.payload;
+        },
+        addStatement: (state, action: PayloadAction<Statement>) => {
+            state.statements.push(action.payload);
         }
     }
 });
 
 export const {
     initStatements,
+    addStatement,
 } = statementsSlice.actions;
 
 export const selectStatements = (({ statements }: RootState) => statements.statements);

@@ -11,6 +11,7 @@ import MyListings from "./pages/MyListings";
 import Submissions from "./pages/Submissions";
 import store from "./redux";
 import MyStatements from "./pages/MyStatements";
+import StatementForm from "./pages/StatementForm";
 
 const router = createBrowserRouter([
   {
@@ -36,7 +37,11 @@ const router = createBrowserRouter([
       {
         path: "statements",
         element: <MyStatements />
-      },
+      }, 
+      {
+        path: "create-statement",
+        element: <StatementForm />
+      }
     ],
   },
 ]);
